@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<style>
+    .btn-primary{
+    background-color:rgb(23, 30, 137)  !important;
+}
+.btn-primary:hover{
+    background-color:rgb(79, 79, 85);
+}
+.user_card {
+    position: absolute;
+    background: #eadbdb;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding:200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+.form_container {
+    margin-top: 50px;
+
+}
+.title{
+    font-size: 22px;
+    text-transform: uppercase;
+    padding: 40px 30px;
+    color: rgb(0, 0, 0);
+    font-style: normal;
+}
+.button-login{
+    text-align: center;
+    padding: 20px;
+}
+.ForgetPass{
+    text-align: center;
+}
+.text-FP{
+    color: rgb(122, 120, 120);
+}
+.text-FP:hover{
+    color: red;
+}
+
+</style>
+
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center form_container">
+                    <div class="title">
+                        <p1>User Login</p1>
+                    </div>
+
+                    <div class="icon1">
+                        <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <img src="https://pluspng.com/img-png/user-png-icon-big-image-png-2240.png"
+                                    height="20px" width="20px">
+                            </div>
+                            <input type="text" name="" class="form-control" value="" placeholder="username">
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="icon2">
+                        <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <img src="https://cdn2.iconfinder.com/data/icons/real-estate-353/64/2-512.png"
+                                    width="21px">
+                            </div>
+                            <input type="password" name="" class="form-control input_pass" value=""
+                                placeholder="password">
+                        </div>
+                    </div>
+                </div>
+                    
+
+                    <div class="ForgetPass">
+                        <a href="Forget your password" class="text-FP">Forget your password</a>
+                    </div>
+
+                    <div class="button-login">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
