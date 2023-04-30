@@ -1,3 +1,10 @@
+<?php
+require_once "../connect.php";
+$sql = "select * from subject;";
+$result = mysqli_query($conn, $sql);
+$subjectList = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +24,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
-
     <script
       src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js"
       type="text/javascript"
@@ -27,14 +33,12 @@
       rel="stylesheet"
       type="text/css"
     />
-    <style></style>
-
-    
+    <script type="text/javascript" src="../../javascript/add_quiz.js"></script>
   </head>
 
   <nav
     class="navbar navbar-expand-lg navbar-light"
-    style="background-color: #d6eaf8"
+    style="background-color: #d6eaf8" 
   >
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -56,18 +60,22 @@
               <label class="small mb-1" for="inputUsername">Tên bài test</label>
               <input
                 class="form-control"
-                id="inputUsername"
+                id="inputTestName"
                 type="text"
                 placeholder="Điền tên bài test"
               />
             </div>
             <div class="mb-3">
               <label class="small mb-1" for="inputUsername">Môn học</label>
-              <select class="custom-select" id="inputGroupSelect02">
-                <option selected>Chọn môn học</option>
-                <option value="1">Toán</option>
-                <option value="2">Java</option>
-                <option value="3">Thiết kế</option>
+              <select class="custom-select" id="inputGroupSubject">
+                <option selected value="0">Chọn môn học</option>
+                <?php
+                foreach ($subjectList as $subject) {
+                  ?>
+                   <option value="<?= $subject["id"] ?>"><?= $subject["name"] ?></option>
+                  <?php
+                }
+                ?>
               </select>
             </div>
             <div class="row gx-5 mb-3">
@@ -102,42 +110,7 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody id="bodyQuestions">
-                  <tr>
-                    <td>1</td>
-                    <td>Số tự nhiên lớn nhất có 2 chữ số</td>
-                    <td>
-                      <a
-                        href="#"
-                        class="edit"
-                        title=""
-                        data-toggle="tooltip"
-                        data-original-title="Settings"
-                        ><i class="material-icons"
-                          ><img
-                            src="../../image/edit.png"
-                            style="margin: 10px"
-                            width="20px"
-                          />Edit</i
-                        ></a
-                      >
-                      <a
-                        href="#"
-                        class="Delete"
-                        title=""
-                        data-toggle="tooltip"
-                        data-original-title="Settings"
-                        ><i class="material-icons"
-                          ><img
-                            src="../../image/x.webp"
-                            style="margin: 10px"
-                            width="25px"
-                          />Delete</i
-                        ></a
-                      >
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody id="bodyQuestions"></tbody>
               </table>
               <div class="col text-center">
                 <button
@@ -151,9 +124,19 @@
                   Thêm mới câu hỏi
                 </button>
               </div>
-            </div>
+            </div>  
           </div>
         </div>
+      </div>
+      <div class="col text-center">
+        <button
+          id="buttonAddQuestion"
+          type="button"
+          class="btn btn-primary"
+          onclick="saveTest()"
+        >
+          Lưu bài thi
+        </button>
       </div>
     </div>
 
@@ -164,20 +147,28 @@
         <div class="modal-content">
           <div class="modal-header">
             <hp class="modal-title">Thêm mới câu hỏi</hp>
-            <button type="button" class="close" data-dismiss="modal">
-            </button>
+            <button type="button" class="close" data-dismiss="modal"></button>
           </div>
-          <div class="modal-body" id ="modalBody">
+          <div class="modal-body" id="modalBody">
             <div class="mb-3">
               <label class="medium mb-1" for="inputUsername">Câu hỏi</label>
-              <textarea class="form-control" id="textQuestion" rows="5"></textarea>
+              <textarea
+                class="form-control"
+                id="textQuestion"
+                rows="5"
+              ></textarea>
             </div>
             <div class="row gx-5 mb-3">
               <div class="col-md-4">
                 <label class="medium mb-1" for="inputFirstName"
-                  >Chọn số lượng câu hỏi</label>
+                  >Chọn số lượng câu hỏi</label
+                >
 
-                <select class="form-select" id = "selectAnswer" aria-label="Default select example">
+                <select
+                  class="form-select"
+                  id="selectAnswer"
+                  aria-label="Default select example"
+                >
                   <option selected value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -187,25 +178,37 @@
               </div>
               <div class="col-md-4">
                 <label class="medium mb-1" for="inputFirstName"
-                  >Chọn kiểu câu hỏi</label>
-                  <select class="form-select" id = "selectAnswerType" aria-label="Default select example">
-                    <option selected value="1">Một lựa chọn</option>
-                    <option value="2">Nhiều lựa chọn</option>
-                  </select>
+                  >Chọn kiểu câu hỏi</label
+                >
+                <select
+                  class="form-select"
+                  id="selectAnswerType"
+                  aria-label="Default select example"
+                >
+                  <option selected value="1">Một lựa chọn</option>
+                  <option value="2">Nhiều lựa chọn</option>
+                </select>
               </div>
-             
             </div>
             <div class="mb-3">
-              <button type="button" class="btn btn-primary"
-               onclick="generateQuestion()">
-                Hiển thị câu trả lời</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="generateQuestion()"
+              >
+                Hiển thị câu trả lời
+              </button>
             </div>
-            <div id = "answerList">
-              
-            </div>
+            <div id="answerList"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="addQuestion()">Thêm mới</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addQuestion()"
+            >
+              Thêm mới
+            </button>
             <button type="button" class="btn btn-default" data-dismiss="modal">
               Close
             </button>
@@ -214,5 +217,4 @@
       </div>
     </div>
   </body>
-  <script type="text/javascript" src="../../javascript/add_quiz.js"></script>
 </html>

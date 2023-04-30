@@ -29,7 +29,7 @@ function generateQuestion() {
   for (var i = 1; i <= numberAnswer; i++) {
     answerList.innerHTML += `<div class="mb-3">
     <label class="medium mb-1">Câu trả lời ${i}</label>
-    <textarea class="form-control" id="textQuestion" rows="2"></textarea>
+    <textarea class="form-control" id="answer${i}" rows="2"></textarea>
   </div>`;
   }
   answerList.innerHTML += `<div class="mb-3">
@@ -53,7 +53,20 @@ function addQuestion() {
   var para = document.createElement("tr");
   var textAreaQuestion = document.getElementById("textQuestion");
   var question = textAreaQuestion.value;
+  var answerList = document.getElementById("answerList");
+
   let numQuestion = bodyQuestions.children.length;
+
+  if (textAreaQuestion.value == "") {
+    alert("Hãy điền câu hỏi");
+    return;
+  }
+  console.log(answerList.childNodes.length);
+  if (answerList.childNodes.length == 0) {
+    alert("Hãy thêm câu trả lời");
+    return;
+  }
+
   let template = ` <td>${++numQuestion}</td>
   <td>${question}</td>
   <td>
@@ -91,4 +104,22 @@ function addQuestion() {
   textAreaQuestion.value = "";
 
   $("#addQuestionModal").modal("hide");
+}
+function saveTest() {
+  var inputTestName = document.getElementById("inputTestName").value;
+  var inputGroupSubject = document.getElementById("inputGroupSubject").value;
+  var startPicker = document.getElementById("startPicker").value;
+  var endPicker = document.getElementById("endPicker").value;
+  if(inputTestName=='' || inputGroupSubject == 0 ||startPicker=='' ||endPicker==''){
+    alert("Hãy điền đầy đủ thông tin bài thi123123");
+    return;
+  }
+  console.log(startPicker);
+  // $.ajax({
+  //   method: "POST",
+  //   url: "../controller/AddTestController.php",
+  //   success: function () {
+  //     console.log("123123");
+  //   },
+  // });
 }
