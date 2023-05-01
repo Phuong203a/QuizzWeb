@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     // Create connection
-    $conn = new mysqli("localhost", "root","root", "quiz_web");
+    $conn = new mysqli("localhost", "root","", "quiz_web");
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
