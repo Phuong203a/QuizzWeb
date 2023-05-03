@@ -1,3 +1,6 @@
+var questionList = [];
+var bodyQuestion = [];
+
 $(function () {
   $("#startPicker").datetimepicker({
     uiLibrary: "bootstrap4",
@@ -21,26 +24,25 @@ function onClickAddQuestion() {
   };
 }
 function generateQuestion() {
-  var answerList = document.getElementById("answerList");
+  var listAnswer = document.getElementById("listAnswer");
   var numberAnswer = document.getElementById("selectAnswer").value;
   var questionType = document.getElementById("selectAnswerType").value;
-  console.log(questionType);
-  answerList.innerHTML = "";
+  listAnswer.innerHTML = "";
   for (var i = 1; i <= numberAnswer; i++) {
-    answerList.innerHTML += `<div class="mb-3">
+    listAnswer.innerHTML += `<div class="mb-3">
     <label class="medium mb-1">Câu trả lời ${i}</label>
     <textarea class="form-control" id="answer${i}" rows="2"></textarea>
   </div>`;
   }
-  answerList.innerHTML += `<div class="mb-3">
+  listAnswer.innerHTML += `<div class="mb-3">
   <label class="medium mb-1" for="inputFirstName"
   >Chọn câu trả lời đúng</label>
   </div>`;
   for (var i = 1; i <= numberAnswer; i++) {
-    answerList.innerHTML += `<div class="form-check">
+    listAnswer.innerHTML += `<div class="form-check">
     <input class="form-check-input" type=${
-      questionType == 2 ? "checkbox" : "radio"
-    } value="">
+      questionType == 1 ? "checkbox" : "radio"
+    } id = "checkAnswer${i}" name="answerCheck">
     <label class="form-check-label" for="flexCheckDefault">
     Câu trả lời ${i}
     </label>
@@ -48,12 +50,24 @@ function generateQuestion() {
   }
 }
 
+// function deleteQuestion(numQuestion) {
+//   var bodyQuestions = document.getElementById("bodyQuestions");
+//   var para = document.createElement("tr");
+//   bodyQuestions.innerHTML = "";
+//   bodyQuestion.splice(numQuestion - 1, 1);
+//   for (var i = 1; i <= bodyQuestion.length; i++) {
+//     para.innerHTML = bodyQuestion[i - 1];
+//     bodyQuestions.appendChild(para);
+//   }
+// }
+
 function addQuestion() {
   var bodyQuestions = document.getElementById("bodyQuestions");
   var para = document.createElement("tr");
   var textAreaQuestion = document.getElementById("textQuestion");
-  var question = textAreaQuestion.value;
-  var answerList = document.getElementById("answerList");
+  var questionContent = textAreaQuestion.value;
+  var listAnswer = document.getElementById("listAnswer");
+  var questionType = document.getElementById("selectAnswerType").value;
 
   let numQuestion = bodyQuestions.children.length;
 
@@ -61,14 +75,13 @@ function addQuestion() {
     alert("Hãy điền câu hỏi");
     return;
   }
-  console.log(answerList.childNodes.length);
-  if (answerList.childNodes.length == 0) {
+  if (listAnswer.childNodes.length == 0) {
     alert("Hãy thêm câu trả lời");
     return;
   }
 
-  let template = ` <td>${++numQuestion}</td>
-  <td>${question}</td>
+  let template = `<td>${++numQuestion}</td>
+  <td>${questionContent}</td>
   <td>
     <a
       href="#"
@@ -86,6 +99,7 @@ function addQuestion() {
     >
     <a
       href="#"
+      onclick="deleteQuestion(${numQuestion})"
       class="Delete"
       title=""
       data-toggle="tooltip"
@@ -99,18 +113,40 @@ function addQuestion() {
       ></a
     >
   </td>`;
+  bodyQuestion.push(template);
   para.innerHTML = template;
   bodyQuestions.appendChild(para);
-  textAreaQuestion.value = "";
 
+  var question = new questionModel();
+  question.content = textAreaQuestion.value;
+  question.questionType = questionType;
+
+  var answers = document.querySelectorAll('[id^="answer"]');
+  question.answerList = [];
+  for (var i = 1; i <= answers.length; i++) {
+    var checkAnswerId = document.getElementById(`checkAnswer${i}`);
+    var answer = new answerModel();
+    answer.content = answers[i - 1].value;
+    answer.isCorrect = checkAnswerId.checked ? 1 : 0;
+    question.answerList.push(answer);
+  }
+  questionList.push(question);
+  //clear section
+  textAreaQuestion.value = "";
   $("#addQuestionModal").modal("hide");
 }
+
 function saveTest() {
   var testName = document.getElementById("inputTestName").value;
   var subjectId = document.getElementById("inputGroupSubject").value;
   var startPicker = document.getElementById("startPicker").value;
   var endPicker = document.getElementById("endPicker").value;
-  if(testName=='' || subjectId == 0 ||startPicker=='' ||endPicker==''){
+  if (
+    testName == "" ||
+    subjectId == 0 ||
+    startPicker == "" ||
+    endPicker == ""
+  ) {
     alert("Hãy điền đầy đủ thông tin bài thi");
     return;
   }
@@ -119,13 +155,14 @@ function saveTest() {
     url: "../../controller/AddTestController.php",
     data: {
       testName: testName,
-      subjectId:subjectId,
-      startPicker:startPicker,
-      endPicker:endPicker,
-  },
+      subjectId: subjectId,
+      startPicker: startPicker,
+      endPicker: endPicker,
+      questionList: questionList,
+    },
     success: function (result) {
-      alert(result)
-      // location.reload();
+      alert(result);
+      location.reload();
     },
   });
 }

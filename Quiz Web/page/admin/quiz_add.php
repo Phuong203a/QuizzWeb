@@ -34,6 +34,8 @@ mysqli_free_result($result);
       type="text/css"
     />
     <script type="text/javascript" src="../../javascript/add_quiz.js"></script>
+    <script type="text/javascript" src="../../javascript/model.js"></script>
+
   </head>
 
   <nav
@@ -185,8 +187,8 @@ mysqli_free_result($result);
                   id="selectAnswerType"
                   aria-label="Default select example"
                 >
-                  <option selected value="1">Một lựa chọn</option>
-                  <option value="2">Nhiều lựa chọn</option>
+                  <option selected value="0">Một lựa chọn</option>
+                  <option value="1">Nhiều lựa chọn</option>
                 </select>
               </div>
             </div>
@@ -199,7 +201,7 @@ mysqli_free_result($result);
                 Hiển thị câu trả lời
               </button>
             </div>
-            <div id="answerList"></div>
+            <div id="listAnswer"></div>
           </div>
           <div class="modal-footer">
             <button
