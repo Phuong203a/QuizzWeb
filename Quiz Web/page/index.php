@@ -1,5 +1,5 @@
 <?php
-header('Location: login.php');
+header('Location: admin/quiz_add.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
