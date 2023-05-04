@@ -2,10 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>Student Profile</title>
+    <title>Add Student</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Ultra&family=Yeseva+One&display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -15,51 +19,13 @@
 <style>
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light "style="background-color:#D6EAF8">
-    <a class="navbar-brand " href="#">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Test new
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">midterm exams English 3</a>
-                    <a class="dropdown-item" href="#">midterm exams English 1</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">midterm exams Pre-sessional English 2 </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Exam
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Pre-sessional English 1</a>
-                    <a class="dropdown-item" href="#">Pre-sessional English 2</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">English 1</a>
-                    <a class="dropdown-item" href="#">English 2</a>
-                    <a class="dropdown-item" href="#">English 3</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-           <span>Đàm Thị Phượng</span>
-            <a class="nav-link" href="#">Logout</a>
-        </form>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#D6EAF8 ">
+    <a class="navbar-brand text-primary" href="/page/admin/student_management.html" style="font-family: 'Yeseva One', cursive;font-size:23px;"><img
+            src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Go back</a>
 </nav>
 
 
-<body style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+<body style="font-family: 'Times New Roman', Times, serif;">
     <div class="container-xl px-4 mt-4">
         <hr class="mt-0 mb-4">
         <div class="row">
@@ -70,15 +36,31 @@
                         <img style="width:100%;" class="img-account-profile rounded-circle mb-2"
                             src="https://media.istockphoto.com/id/1200064810/vi/vec-to/n%C3%BAt-%C4%91%C4%83ng-nh%E1%BA%ADp-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-ho%E1%BA%B7c-n%C3%BAt-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-x%C3%A1c-th%E1%BB%B1c-truy-c%E1%BA%ADp-m%E1%BB%8Di-ng%C6%B0%E1%BB%9Di-t%C3%A0i-kho%E1%BA%A3n.jpg?s=612x612&w=is&k=20&c=3yqYr-X75GJ0LxJ6t-x5wbEmNvevIwJ86d9SQES1-dk="
                             alt="">
+                        <button class="btn btn-primary" type="button">Upload</button>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-8" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
                 <!-- Account details card-->
                 <div class="card mb-4">
                     <div class="card-header p-3 mb-2" style="background-color:#D6EAF8 ">Account Details</div>
                     <div class="card-body">
                         <form>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Username</label>
+                                <input class="form-control" id="inputUsername" type="text"
+                                    placeholder="Enter your username">
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputPassword">Password</label>
+                                <input class="form-control" id="password" type="password"
+                                    placeholder="Enter your Password">
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputPassword">Re password</label>
+                                <input class="form-control" id="Repassword" type="password"
+                                    placeholder="Re enter Password">
+                            </div>
                             <!-- Form Group (username)-->
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
@@ -97,17 +79,16 @@
                             </div>
                             <div style="font-size: 18px;">
                                 <label for="Gender;">Gender:</label>
-                                <div class="form-check form-check-inline" style="margin:0px 50px;">
+                                <div class="form-check form-check-inline" style="margin:10px 50px ;">
                                     <label class="form-check-lable">
-                                        <input type="radio" class="form-check-input" name="optradio" >Male
+                                        <input type="radio" class="form-check-input" name="optradio">Male
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-lable">
                                         <input type="radio" class="form-check-input" name="optradio">Female
-                                    </label><br>
-                                </div> 
-                        </div>
-                            
+                                </div>
+                            </div>
+
                             <!-- Form Row        -->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (organization name)-->
@@ -123,38 +104,40 @@
                                         placeholder="Enter your birthday" value="Birthday">
                                 </div>
                             </div>
-                            
                             <!-- Form Group (email address)-->
-                        
-                                <!-- Form Group (phone number)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputPhone">Phone number</label>
-                                    <input class="form-control" id="inputPhone" type="tel"
-                                        placeholder="Enter your phone number" value="0123456789">
-                                </div>
-                                <!-- Form Group (birthday)-->
-                                                      
+
+                            <!-- Form Group (phone number)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel"
+                                    placeholder="Enter your phone number" value="0123456789">
+                            </div>
+                            <!-- Form Group (birthday)-->
+
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                                 <input class="form-control" id="inputEmailAddress" type="email"
                                     placeholder="Enter your email address" value="An@gmail.com">
                             </div>
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputLocation">Address</label>
+                                <label class="col-md-6" for="inputLocation">Address</label>
                                 <input class="form-control" id="inputLocation" type="text"
                                     placeholder="Enter your location" value="24-Nguyễn Đình Chiểu-Nha Trang">
                             </div>
+
+                            </label><br>
                             <!-- Form Row-->
-                       
+
                             <!-- Save changes button-->
+                            <button class=" btn btn-primary" type="button">Add</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+    </div>
+    </div>
+    </div>
 </body>
-
-
 </html>
