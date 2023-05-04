@@ -10,38 +10,37 @@ try {
 
   if (isset($testName) && isset($subjectId) && isset($startPicker) && isset($endPicker)) {
     $startPicker = date("Y-m-d H:i:s", strtotime($startPicker));
-    $endPicker = date("Y-m-d h:i:s", strtotime($endPicker));
+    $endPicker = date("Y-m-d H:i:s", strtotime($endPicker));
     $code =  $subjectId + date("YmdHis");
 
     //insert quiz
     $sql = "insert into quiz_web.test 
         (name, code, subject_id, start_time, end_time,create_date,update_date) 
         VALUES ('$testName' ,$code,'$subjectId', '$startPicker','$endPicker',sysdate(),sysdate())";
-    $result = mysqli_query($conn, $sql);
+    $result = $conn->query($sql);
     $returnIdTest = $conn->insert_id;
 
     //insert question
-    for ($i = 0; $i < sizeof($questionList); $i++) {
+    for ($i = 0; $i < count($questionList); $i++) {
       $content = $questionList[$i]['content'];
       $questionType = $questionList[$i]['questionType'];
       $answerList = $questionList[$i]['answerList'];
       
-      $sql = "insert into quiz_web.question 
+      $questionSql = "insert into quiz_web.question 
             (content, test_id, create_date, update_date, question_type) 
             VALUES ('$content',$returnIdTest,sysdate(),sysdate(),$questionType)";
-      $result = mysqli_query($conn, $sql);
+      $result = $conn->query($questionSql);
       $returnIdQuestion = $conn->insert_id;
       
       //insert answer
-      for ($i = 0; $i < sizeof($answerList); $i++) {
-        $content = $answerList[$i]['content'];
-        $isCorrect = $answerList[$i]['isCorrect'];
-        $sql = "insert into quiz_web.answer 
+      for ($j = 0; $j < count($answerList); $j++) {
+        $content = $answerList[$j]['content'];
+        $isCorrect = $answerList[$j]['isCorrect'];
+        $answerSql = "insert into quiz_web.answer 
         (question_id, content, is_correct, create_date, update_date) 
         VALUES ($returnIdQuestion,'$content',$isCorrect,sysdate(),sysdate())";
-        $result = mysqli_query($conn, $sql);
+        $result = $conn->query($answerSql);
       }
-
     }
     echo 'Lưu bài thi thành công';
     exit();
