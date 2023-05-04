@@ -10,7 +10,7 @@ try {
 
   if (isset($testName) && isset($subjectId) && isset($startPicker) && isset($endPicker)) {
     $startPicker = date("Y-m-d H:i:s", strtotime($startPicker));
-    $endPicker = date("Y-m-d h:i:s", strtotime($endPicker));
+    $endPicker = date("Y-m-d H:i:s", strtotime($endPicker));
     $code =  $subjectId + date("YmdHis");
 
     //insert quiz
