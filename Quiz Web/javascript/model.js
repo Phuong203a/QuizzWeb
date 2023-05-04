@@ -15,7 +15,7 @@ function questionModel (){
     let questionType =0;
     let createDate= new Date();
     let updateDate= new Date();
-    let answerList = [];
+    let answerList;
 }
 function answerModel (){
     let id = 0;
