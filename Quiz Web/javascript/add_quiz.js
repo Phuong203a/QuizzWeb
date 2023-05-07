@@ -152,7 +152,7 @@ function saveTest() {
   }
   $.ajax({
     method: "POST",
-    url: "../../controller/AddTestController.php",
+    url: "../../controller/AddQuizzController.php",
     data: {
       testName: testName,
       subjectId: subjectId,
