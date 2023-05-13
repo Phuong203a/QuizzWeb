@@ -42,8 +42,7 @@
                 $counta = 1;
             }
             else{
-                $nameq =  $countq.".".$counta;
-                echo "*"."<input type='radio' name= '$nameq' value= $st_ans>";
+                echo "*"."<input type='radio' name= '$countq' value= $st_ans>";
                 echo $counta." . " ;
                 $counta += 1;
                 echo $st_ans;
