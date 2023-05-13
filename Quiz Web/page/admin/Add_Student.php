@@ -20,7 +20,7 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#D6EAF8 ">
-    <a class="navbar-brand text-primary" href="/page/admin/student_management.html" style="font-family: 'Yeseva One', cursive;font-size:23px;"><img
+    <a class="navbar-brand text-primary" href="student_management.php" style="font-family: 'Yeseva One', cursive;font-size:23px;"><img
             src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Go back</a>
 </nav>
 

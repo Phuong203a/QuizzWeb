@@ -72,7 +72,7 @@
                             style="width: 130px;">Login</button>
                         <div class="invalid-feedback">
                         </div>
-                        <div><a href="login.html" name="loginadmin">Login student</a></div>
+                        <div><a href="login.php" name="loginadmin">Login student</a></div>
                     </div>
                 </div>
             </div>

@@ -22,7 +22,11 @@
     <div class="container-fluid">
       <a class="navbar-brand" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;">Student Management</a>
       <form class="d-flex col-sm-5">
-        <a href="/page/admin/Add_Student.html" class="btn btn-outline-primary text-dark col-sm-4 me-5" style="background-color: white">
+        <a href="Edit_Student.php" class="btn btn-outline-primary text-dark col-sm-4 me-4" style="background-color: white">
+            <i class="material-icons" ><img src="/image/add.png" width="20px"></i>
+            <span> Edit student</span>
+        </a>
+        <a href="Add_Student.php" class="btn btn-outline-primary text-dark col-sm-4 me-4" style="background-color: white">
             <i class="material-icons" ><img src="/image/add.png" width="20px"></i>
             <span> Add new student</span>
         </a>

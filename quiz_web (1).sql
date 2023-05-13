@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 13, 2023 lúc 03:01 PM
+-- Thời gian đã tạo: Th5 13, 2023 lúc 07:07 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -78,7 +78,15 @@ INSERT INTO `answer` (`id`, `question_id`, `content`, `is_correct`, `create_date
 (11, 8, 'Theory', 0, NULL, NULL),
 (12, 8, 'Practice', 0, NULL, NULL),
 (13, 8, 'Mid-term', 0, NULL, NULL),
-(14, 8, 'end of term', 1, NULL, NULL);
+(14, 8, 'end of term', 1, NULL, NULL),
+(15, 9, 'v5.3.0-alpha4', 0, NULL, NULL),
+(16, 9, 'v5.3.0-alpha3', 1, NULL, NULL),
+(17, 9, 'v6.0.0-alpha1', 0, NULL, NULL),
+(18, 9, 'v5.1.0-alpha2', 0, NULL, NULL),
+(19, 10, '1', 0, NULL, NULL),
+(20, 10, '2', 0, NULL, NULL),
+(21, 10, '3', 1, NULL, NULL),
+(22, 10, '4', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +147,9 @@ INSERT INTO `question` (`id`, `content`, `test_id`, `is_multiple`, `create_date`
 (3, 'how many hours in a day', 1, 1, NULL, NULL),
 (4, 'Is the weather good today?', 2, 0, NULL, NULL),
 (7, 'What is the hardest part of the web?', 1, NULL, NULL, NULL),
-(8, 'Which column of the website has the highest score?', 1, NULL, NULL, NULL);
+(8, 'Which column of the website has the highest score?', 1, NULL, NULL, NULL),
+(9, 'What is latest bootstrap version?', 1, NULL, NULL, NULL),
+(10, 'How many methods of including css in an HTML document?', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -200,6 +210,39 @@ CREATE TABLE `student_answer` (
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `student_answer`
+--
+
+INSERT INTO `student_answer` (`id`, `student_id`, `test_id`, `number_correct_answer`, `finish_timed`, `create_date`, `update_date`) VALUES
+(5, 26, 1, 3, '2023-05-13 22:20:19', NULL, NULL),
+(6, 26, 1, 3, '2023-05-13 22:23:30', NULL, NULL),
+(7, 26, 1, 2, '2023-05-13 22:23:40', NULL, NULL),
+(8, 26, 1, 2, '2023-05-13 22:26:33', NULL, NULL),
+(9, 26, 1, 0, '2023-05-13 22:26:41', NULL, NULL),
+(10, 26, 1, 0, '2023-05-13 22:30:18', NULL, NULL),
+(11, 26, 1, 1, '2023-05-13 22:30:24', NULL, NULL),
+(12, 26, 1, 1, '2023-05-13 22:30:45', NULL, NULL),
+(13, 26, 1, 1, '2023-05-13 22:31:00', NULL, NULL),
+(14, 26, 1, 1, '2023-05-13 22:31:08', NULL, NULL),
+(15, 26, 1, 1, '2023-05-13 22:32:00', NULL, NULL),
+(16, 26, 1, 1, '2023-05-13 22:32:05', NULL, NULL),
+(17, 26, 1, 1, '2023-05-13 22:34:55', NULL, NULL),
+(18, 26, 1, 1, '2023-05-13 22:35:01', NULL, NULL),
+(19, 26, 1, 1, '2023-05-13 22:36:09', NULL, NULL),
+(20, 26, 1, 1, '2023-05-13 22:36:58', NULL, NULL),
+(21, 26, 1, 2, '2023-05-13 22:37:06', NULL, NULL),
+(22, 26, 1, 2, '2023-05-13 22:37:39', NULL, NULL),
+(23, 26, 1, 0, '2023-05-13 22:37:44', NULL, NULL),
+(24, 26, 1, 0, '2023-05-13 22:38:22', NULL, NULL),
+(25, 26, 1, 3, '2023-05-13 22:38:25', NULL, NULL),
+(40, 26, 1, 5, '2023-05-14 00:01:51', NULL, NULL),
+(41, 26, 1, 5, '2023-05-14 00:02:03', NULL, NULL),
+(42, 26, 1, 4, '2023-05-14 00:03:29', NULL, NULL),
+(43, 26, 1, 4, '2023-05-14 00:05:24', NULL, NULL),
+(44, 26, 1, 4, '2023-05-14 00:05:58', NULL, NULL),
+(45, 26, 1, 4, '2023-05-14 00:06:03', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,7 +370,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `class`
@@ -345,7 +388,7 @@ ALTER TABLE `major`
 -- AUTO_INCREMENT cho bảng `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
@@ -357,7 +400,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT cho bảng `student_answer`
 --
 ALTER TABLE `student_answer`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT cho bảng `subject`

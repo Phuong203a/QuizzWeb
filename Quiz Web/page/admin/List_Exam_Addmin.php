@@ -21,7 +21,7 @@
 <nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
   <div class="container-fluid">
     <a class="navbar-brand" href="student_management.php" style="font-family:'Roboto', sans-serif;font-size:23px;"><img
-      src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Go back</a>
+      src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Student</a>
   <a class="navbar-brand d-flex col-sm-6" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;" >List Exam</a>
   <form class="d-flex col-sm-2.5">
       <a href="quiz_add.php" class="btn btn-outline-primary text-dark col-sm-4 me-5" style="background-color: white">

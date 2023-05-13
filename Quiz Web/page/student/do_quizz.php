@@ -15,48 +15,197 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         h1 {text-align: center;}
+        a {text-align: right; text-decoration: none;}
+        body {text-align: justify;}
     </style>
 </head>
 <body>
     <nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
     <h1 class="text-center">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Test here</h1>
+    <a href="History_Exam.php">See result&emsp;</a>
     </nav>
-    <form method="post">
+    <form method="post" >
     <?php 
         require "../connect.php";
-        $sql = "select question.content as question FROM quiz_web.question WHERE question.test_id = 1
-        union
-        select answer.content as answer from quiz_web.answer WHERE answer.question_id = 3 or answer.question_id = 7 or answer.question_id = 8";
+        $sql = "select content as quest FROM question WHERE id = 3";
         $result = mysqli_query($conn, $sql);
-        $count = 0;
-        $countq = 1;
-        $counta = 1;
         while($row = mysqli_fetch_array($result))
         {
+            echo "</br>"."1) ";
+            $st_q = $row['quest'];
+            echo  $st_q;
+            echo "</br>";
+        }
+        $sql = "select content as ans FROM answer WHERE question_id = 3";
+        $result = mysqli_query($conn, $sql);
+        $count = 1;
+        while($row = mysqli_fetch_array($result))
+        {
+            $st_a = $row['ans'];
+            echo "<input type='radio' name= 'id3' value= $st_a>";
+            echo "$count"." . ";
+            echo  $st_a;
             $count += 1;
-            $st_ans = $row['question'];
-            if($count % 5 == 1){
-                echo $countq.")&emsp;";
-                echo $st_ans;
-                $countq += 1;
-                $counta = 1;
-            }
-            else{
-                echo "*"."<input type='radio' name= '$countq' value= $st_ans>";
-                echo $counta." . " ;
-                $counta += 1;
-                echo $st_ans;
-            }
+            echo "</br>";
+        }
+
+        $sql = "select content as quest FROM question WHERE id = 7";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo "</br>"."2) ";
+            $st_q = $row['quest'];
+            echo  $st_q;
+            echo "</br>";
+        }
+        $sql = "select content as ans FROM answer WHERE question_id = 7";
+        $result = mysqli_query($conn, $sql);
+        $count = 1;
+        while($row = mysqli_fetch_array($result))
+        {
+            $st_a = $row['ans'];
+            echo "<input type='radio' name= 'id7' value= $st_a>";
+            echo "$count"." . ";
+            echo  $st_a;
+            $count += 1;
+            echo "</br>";
+        }
+
+        $sql = "select content as quest FROM question WHERE id = 8";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo "</br>"."3) ";
+            $st_q = $row['quest'];
+            echo  $st_q;
+            echo "</br>";
+        }
+        $sql = "select content as ans FROM answer WHERE question_id = 8";
+        $result = mysqli_query($conn, $sql);
+        $count = 1;
+        while($row = mysqli_fetch_array($result))
+        {
+            $st_a = $row['ans'];
+            echo "<input type='radio' name= 'id8' value= $st_a>";
+            echo "$count"." . ";
+            echo  $st_a;
+            $count += 1;
+            echo "</br>";
+        }
+
+
+        $sql = "select content as quest FROM question WHERE id = 9";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo "</br>"."4) ";
+            $st_q = $row['quest'];
+            echo  $st_q;
+            echo "</br>";
+        }
+        $sql = "select content as ans FROM answer WHERE question_id = 9";
+        $result = mysqli_query($conn, $sql);
+        $count = 1;
+        while($row = mysqli_fetch_array($result))
+        {
+            $st_a = $row['ans'];
+            echo "<input type='radio' name= 'id9' value= $st_a>";
+            echo "$count"." . ";
+            echo  $st_a;
+            $count += 1;
+            echo "</br>";
+        }
+
+        $sql = "select content as quest FROM question WHERE id = 10";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo "</br>"."5) ";
+            $st_q = $row['quest'];
+            echo  $st_q;
+            echo "</br>";
+        }
+        $sql = "select content as ans FROM answer WHERE question_id = 10";
+        $result = mysqli_query($conn, $sql);
+        $count = 1;
+        while($row = mysqli_fetch_array($result))
+        {
+            $st_a = $row['ans'];
+            echo "<input type='radio' name= 'id10' value= $st_a>";
+            echo "$count"." . ";
+            echo  $st_a;
+            $count += 1;
             echo "</br>";
         }
         ?>
         </br>
-        <button class=" btn btn-primary" type="submit">Submit</button>
+        <button class=" btn btn-primary" type="submit" style="text-align: center;">Submit</button>
     </form>
         <?php
-        // if (isset($_GET['1'])){
+        $student_ans3 = "";
+        $student_ans7 = "";
+        $student_ans8 = "";
+        $student_ans9 = "";
+        $student_ans10 = "";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['id3'])){
+                $student_ans3 = $_POST['id3'];
+            }
+            if (isset($_POST['id7'])){
+                $student_ans7 = $_POST['id7'];
+            }
+            if (isset($_POST['id8'])){
+                $student_ans8 = $_POST['id8'];
+            }
+            if (isset($_POST['id9'])){
+                $student_ans9 = $_POST['id9'];
+            }
+            if (isset($_POST['id10'])){
+                $student_ans10 = $_POST['id10'];
+            }
 
-        // }
+            $sql = "select * from quiz_web.answer 
+            where question_id = 3 and content like  '%$student_ans3%' and is_correct = 1";
+            $result3 = mysqli_query($conn, $sql);
+            $rowcount=mysqli_num_rows($result3);
+            $correct_count = 0;
+            if ($rowcount == 1)
+                $correct_count += 1;
+
+            $sql = "select * from quiz_web.answer 
+            where question_id = 7 and content like  '%$student_ans7%' and is_correct = 1";
+            $result7 = mysqli_query($conn, $sql);
+            $rowcount = mysqli_num_rows($result7);
+            if ($rowcount == 1)
+                $correct_count += 1;
+
+            $sql = "select * from quiz_web.answer 
+            where question_id = 8 and content like  '%$student_ans8%' and is_correct = 1";
+            $result8 = mysqli_query($conn, $sql);
+            $rowcount = mysqli_num_rows($result8);
+            if ($rowcount == 1)
+                $correct_count += 1;
+                
+            $sql = "select * from quiz_web.answer 
+            where question_id = 9 and content like  '%$student_ans9%' and is_correct = 1";
+            $result9 = mysqli_query($conn, $sql);
+            $rowcount = mysqli_num_rows($result9);
+            if ($rowcount == 1)
+                $correct_count += 1;
+
+            $sql = "select * from quiz_web.answer 
+            where question_id = 10 and content like  '%$student_ans10%' and is_correct = 1";
+            $result10 = mysqli_query($conn, $sql);
+            $rowcount = mysqli_num_rows($result10);
+            if ($rowcount == 1)
+                $correct_count += 1;
+            
+            $sql = "insert into  quiz_web.student_answer 
+            (student_id, test_id, number_correct_answer, finish_timed)
+            values ('26', '1', '$correct_count', NOW())";
+            $result = mysqli_query($conn, $sql);
+        }
     ?>
+
 </body>
 </html>
