@@ -21,7 +21,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#D6EAF8 ">
     <a class="navbar-brand text-primary" href="student_management.php" style="font-family: 'Yeseva One', cursive;font-size:23px;"><img
-            src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Go back</a>
+            src="../../image/go-back-arrow.png" width="40px" style="margin: 20px;">Go back</a>
 </nav>
 
 
@@ -193,8 +193,8 @@
                 else{
                     try { 
                         $sql = "insert into quiz_web.student 
-                        (user_name, password, first_name, last_name, gender, student_id, date_of_birth, phone_number, email, address, class_id, major_id) 
-                        VALUES ('$inputUn' ,'$pass','$fname','$lname','$gen', '$orgname','$birth','$phone', '$email','$adr','1','2')";
+                        (user_name, password, first_name, last_name, gender, student_id, date_of_birth, phone_number, email, address, class_id, major_id, create_date) 
+                        VALUES ('$inputUn' ,'$pass','$fname','$lname','$gen', '$orgname','$birth','$phone', '$email','$adr','1','2', NOW())";
                         $result = mysqli_query($conn, $sql);
                     }catch (mysqli_sql_exception $e) { 
                         var_dump($e);

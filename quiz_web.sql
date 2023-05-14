@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 13, 2023 lúc 07:07 PM
+-- Thời gian đã tạo: Th5 14, 2023 lúc 06:30 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -86,7 +86,9 @@ INSERT INTO `answer` (`id`, `question_id`, `content`, `is_correct`, `create_date
 (19, 10, '1', 0, NULL, NULL),
 (20, 10, '2', 0, NULL, NULL),
 (21, 10, '3', 1, NULL, NULL),
-(22, 10, '4', 0, NULL, NULL);
+(22, 10, '4', 0, NULL, NULL),
+(23, 11, 'no', 0, '2023-05-14 22:04:12', '2023-05-14 22:04:12'),
+(24, 11, 'ye', 1, '2023-05-14 22:04:12', '2023-05-14 22:04:12');
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ CREATE TABLE `question` (
   `id` bigint(10) NOT NULL,
   `content` varchar(100) DEFAULT NULL,
   `test_id` bigint(10) DEFAULT NULL,
-  `is_multiple` bigint(2) DEFAULT NULL,
+  `question_type` bigint(2) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -143,13 +145,14 @@ CREATE TABLE `question` (
 -- Đang đổ dữ liệu cho bảng `question`
 --
 
-INSERT INTO `question` (`id`, `content`, `test_id`, `is_multiple`, `create_date`, `update_date`) VALUES
+INSERT INTO `question` (`id`, `content`, `test_id`, `question_type`, `create_date`, `update_date`) VALUES
 (3, 'how many hours in a day', 1, 1, NULL, NULL),
 (4, 'Is the weather good today?', 2, 0, NULL, NULL),
 (7, 'What is the hardest part of the web?', 1, NULL, NULL, NULL),
 (8, 'Which column of the website has the highest score?', 1, NULL, NULL, NULL),
 (9, 'What is latest bootstrap version?', 1, NULL, NULL, NULL),
-(10, 'How many methods of including css in an HTML document?', 1, NULL, NULL, NULL);
+(10, 'How many methods of including css in an HTML document?', 1, NULL, NULL, NULL),
+(11, 'haaa', 14, 0, '2023-05-14 22:04:12', '2023-05-14 22:04:12');
 
 -- --------------------------------------------------------
 
@@ -183,17 +186,12 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`id`, `user_name`, `password`, `student_id`, `email`, `first_name`, `last_name`, `full_name`, `gender`, `phone_number`, `address`, `class_id`, `date_of_birth`, `major_id`, `create_date`, `update_date`) VALUES
 (14, 'aaa', 'aaa', 52100834, 'An@gmail.com', 'aaa', 'aaa', NULL, 0, '0123456789', '21', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (15, 'aaa', 'aaa', 52100834, 'An@gmail.com', 'aaa', 'aaa', NULL, 0, '0123456789', '21', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(16, 'aa', 'aa', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(17, 'aaa', 'ád', 52100834, 'An@gmail.com', 'Ta', 'An', NULL, 0, '0123456789', '24', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(18, 'aaa', 'ssss', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '24', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(19, 'aa', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(20, 'aa', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(21, 'aa', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (22, 'aa', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(23, '', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (24, '', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 1, '0123456789', '', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (25, '', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(26, '123', '123', 52100111, 'An@gmail.com', '123', 'An', NULL, 1, '0123456789', '123', 1, '0000-00-00 00:00:00', 2, NULL, NULL);
+(26, '123', '123', 52100111, 'An@gmail.com', '123', 'An', NULL, 1, '0123456789', '123', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
+(27, '4321', '', 52100123, 'An@gmail.com', '4321', '4321', NULL, 0, '0123456789', '12344', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
+(28, '', '', 52100023, 'Aaan@gmail.com', 'zzzz', 'zzz', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, '2023-05-14 20:47:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -242,7 +240,31 @@ INSERT INTO `student_answer` (`id`, `student_id`, `test_id`, `number_correct_ans
 (42, 26, 1, 4, '2023-05-14 00:03:29', NULL, NULL),
 (43, 26, 1, 4, '2023-05-14 00:05:24', NULL, NULL),
 (44, 26, 1, 4, '2023-05-14 00:05:58', NULL, NULL),
-(45, 26, 1, 4, '2023-05-14 00:06:03', NULL, NULL);
+(45, 26, 1, 4, '2023-05-14 00:06:03', NULL, NULL),
+(46, 26, 1, 5, '2023-05-14 20:38:02', NULL, NULL),
+(47, 26, 1, 0, '2023-05-14 20:39:12', NULL, NULL),
+(48, 26, 1, 0, '2023-05-14 20:52:08', NULL, NULL),
+(49, 26, 1, 0, '2023-05-14 20:52:43', NULL, NULL),
+(50, 26, 1, 0, '2023-05-14 20:53:32', NULL, NULL),
+(51, 26, 1, 0, '2023-05-14 20:53:49', NULL, NULL),
+(52, 26, 1, 0, '2023-05-14 20:54:13', NULL, NULL),
+(53, 26, 1, 0, '2023-05-14 20:56:04', NULL, NULL),
+(54, 26, 1, 0, '2023-05-14 20:56:21', NULL, NULL),
+(55, 26, 1, 0, '2023-05-14 20:56:44', NULL, NULL),
+(56, 26, 1, 0, '2023-05-14 20:58:59', NULL, NULL),
+(57, 26, 1, 0, '2023-05-14 20:59:29', NULL, NULL),
+(58, 26, 1, 0, '2023-05-14 20:59:39', NULL, NULL),
+(59, 26, 1, 0, '2023-05-14 20:59:56', NULL, NULL),
+(60, 26, 1, 0, '2023-05-14 21:00:13', NULL, NULL),
+(61, 26, 1, 0, '2023-05-14 21:00:29', NULL, NULL),
+(62, 26, 1, 0, '2023-05-14 21:01:04', NULL, NULL),
+(63, 26, 1, 0, '2023-05-14 21:01:12', NULL, NULL),
+(64, 26, 1, 1, '2023-05-14 21:54:26', NULL, NULL),
+(65, 26, 1, 3, '2023-05-14 22:05:42', NULL, NULL),
+(66, 26, 1, 3, '2023-05-14 22:24:55', NULL, NULL),
+(67, 26, 1, 3, '2023-05-14 22:26:09', NULL, NULL),
+(68, 26, 1, 3, '2023-05-14 22:26:29', NULL, NULL),
+(69, 26, 1, 3, '2023-05-14 22:27:05', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -289,7 +311,10 @@ INSERT INTO `test` (`id`, `name`, `code`, `subject_id`, `start_time`, `end_time`
 (1, 'Test1', '1111', 2, '2023-05-13 14:15:15', '2023-05-13 14:45:15', NULL, NULL),
 (2, 'Test2', '1122', 3, '2023-05-13 14:31:09', '2023-05-13 14:59:09', NULL, NULL),
 (3, '12', '20230513144512', 2, '2023-05-13 14:43:00', '2023-05-13 15:43:00', '2023-05-13 14:45:10', '2023-05-13 14:45:10'),
-(4, '12', '20230513151241', 2, '2023-05-13 14:45:00', '2023-05-13 15:45:00', '2023-05-13 15:12:39', '2023-05-13 15:12:39');
+(4, '12', '20230513151241', 2, '2023-05-13 14:45:00', '2023-05-13 15:45:00', '2023-05-13 15:12:39', '2023-05-13 15:12:39'),
+(5, '1aaaaa', '20230514203444', 2, '2023-05-14 20:32:00', '2023-05-14 21:32:00', '2023-05-14 20:34:42', '2023-05-14 20:34:42'),
+(6, 'zzz', '20230514214216', 3, '2023-05-14 21:41:00', '2023-05-14 22:41:00', '2023-05-14 21:42:13', '2023-05-14 21:42:13'),
+(14, 'haa', '20230514220413', 1, '2023-05-14 22:03:00', '2023-05-14 22:03:00', '2023-05-14 22:04:12', '2023-05-14 22:04:12');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -370,7 +395,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `class`
@@ -388,19 +413,19 @@ ALTER TABLE `major`
 -- AUTO_INCREMENT cho bảng `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `student_answer`
 --
 ALTER TABLE `student_answer`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT cho bảng `subject`
@@ -412,7 +437,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT cho bảng `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

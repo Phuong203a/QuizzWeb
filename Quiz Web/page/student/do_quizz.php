@@ -19,12 +19,12 @@
         body {text-align: justify;}
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
-    <h1 class="text-center">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Test here</h1>
+<nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
+    <h1 class="text-center ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Test here</h1>
     <a href="History_Exam.php">See result&emsp;</a>
-    </nav>
-    <form method="post" >
+</nav>
+<body >
+    <form method="post" class="mx-auto bg-light" style="width: 1300px;">
     <?php 
         require "../connect.php";
         $sql = "select content as quest FROM question WHERE id = 3";
@@ -138,9 +138,9 @@
             echo "</br>";
         }
         ?>
-        </br>
-        <button class=" btn btn-primary" type="submit" style="text-align: center;">Submit</button>
-    </form>
+        </br></br>
+        <button class=" btn btn-primary btn-lg" type="submit" style="text-align: center;">Submit</button>
+    </form></br>
         <?php
         $student_ans3 = "";
         $student_ans7 = "";

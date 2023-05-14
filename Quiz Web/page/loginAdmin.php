@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-check">
                     <div>
-                        <input type="checkbox">
+                        <input type="checkbox" checked>
                         <label class="form-check-label" style="padding: 20px;">Remember me </label>
                         <a href="#" name="forgetpassword" class="forgetpassword">For get password</a>
                     </div>

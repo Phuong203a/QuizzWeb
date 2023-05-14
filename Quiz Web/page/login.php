@@ -59,8 +59,8 @@
                 </div>
                 <div class="form-check">
                     <div>
-                        <input type="checkbox">
-                        <label class="form-check-label" style="padding: 20px;">Remember me </label>
+                        <input type="checkbox" checked>
+                        <label class="form-check-label" style="padding: 20px;" aria-checked="true">Remember me </label>
                         <a href="#" name="forgetpassword" class="forgetpassword">For get password</a>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                 else{
                     ?>
                     <script> 
-                        window.location.href = "../page/student/do_quizz.php";
+                        window.location.href = "../page/student/List_Exam_student.php";
                     </script>
                     <?php 
                 }

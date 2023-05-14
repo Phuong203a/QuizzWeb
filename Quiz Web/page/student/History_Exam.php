@@ -94,7 +94,7 @@
                         ?>
                     </div>
                     <!-- Form Group (location)-->
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6"> -->
                     <div class="col-md-6">
                         <?php
                             $sql = "select end_time as et FROM test WHERE id = 1";

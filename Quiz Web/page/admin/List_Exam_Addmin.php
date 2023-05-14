@@ -15,42 +15,43 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <script>
-</script>
-<style>
-</style>
-<nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="student_management.php" style="font-family:'Roboto', sans-serif;font-size:23px;"><img
-      src="/image/go-back-arrow.png" width="40px" style="margin: 20px;">Student</a>
-  <a class="navbar-brand d-flex col-sm-6" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;" >List Exam</a>
-  <form class="d-flex col-sm-2.5">
-      <a href="quiz_add.php" class="btn btn-outline-primary text-dark col-sm-4 me-5" style="background-color: white">
-          <i class="material-icons" ><img src="/image/add.png" width="20px"></i>
-          <span> Add new Exam</span>
-      </a>
-      <input class="form-control me-2" type="search" placeholder="Search exam" aria-label="Search" id = "myInput">
-      <button class="btn btn-outline-primary text-dark" style="background-color: white"type="button" onclick="searchTable()" for = "myInput">Search</button>
-  </form>
-  <script>
-    function myFunction() {
-      var input, filter, table, tr, td, i, txtValue;
+    function searchTable() {
+      var input, filter, found, table, tr, td, i, j;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
       table = document.getElementById("myTable");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
+          td = tr[i].getElementsByTagName("th");
+          for (j = 0; j < td.length; j++) {
+              if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  found = true;
+              }
           }
-        }       
+          if (found) {
+              tr[i].style.display = "";
+              found = false;
+          } else {
+              tr[i].style.display = "none";
+          }
       }
-  }
+    }
   </script>
+<style>
+</style>
+<nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="student_management.php" style="font-family:'Roboto', sans-serif;font-size:23px;"><img
+      src="../../image/setting.png" width="30px" style="margin: 15px;">Student</a>
+  <a class="navbar-brand d-flex col-sm-6" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;" >List Exam</a>
+  <form class="d-flex col-sm-2.5">
+      <a href="quiz_add.php" class="btn btn-outline-primary text-dark col-sm-4 me-5" style="background-color: white">
+          <i class="material-icons" ><img src="../../image/add.png" width="20px"></i>
+          <span> Add new Exam</span>
+      </a>
+      <input class="form-control me-2" type="search" placeholder="Search exam" aria-label="Search" id = "myInput">
+      <button class="btn btn-outline-primary text-dark" style="background-color: white"type="button" onclick="searchTable()" for = "myInput">Search</button>
+  </form>
     </div>
   </nav>
 <body class="text-center" style="vertical-align: middle;">
