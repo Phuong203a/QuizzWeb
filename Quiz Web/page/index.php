@@ -1,6 +1,6 @@
 <?php
 // header('Location: admin/quiz_add.php');
-header('Location: admin/quiz_management.php');
+header('Location: login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

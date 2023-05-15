@@ -41,6 +41,9 @@
 </style>
 <nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
   <div class="container-fluid">
+  <a href="../loginAdmin.php" >
+      <i> <img src="../../image/go-back-arrow.png" width="30px"></i>
+    </a>
     <a class="navbar-brand" href="student_management.php" style="font-family:'Roboto', sans-serif;font-size:23px;"><img
       src="../../image/setting.png" width="30px" style="margin: 15px;">Student</a>
   <a class="navbar-brand d-flex col-sm-6" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;" >List Exam</a>
@@ -86,7 +89,7 @@
         $getMinute = $getMinute2 - $getMinute1;
         echo "<th>".$getMinute." minutes"."</th>";
           echo'<th>
-              <a href="Edit_Student.php" class="edit" title="" data-toggle="tooltip" data-original-title="edit"><i class="material-icons" style="margin:0px 20px;"><img src="/image/edit.png" style="margin: 10px;" width="20px">Edit</i></a>
+              <a href="Edit_Student.php" class="edit" title="" data-toggle="tooltip" data-original-title="edit"><i class="material-icons" style="margin:0px 20px;"><img src="../../image/edit.png" style="margin: 10px;" width="20px">Edit</i></a>
           </th>
           </tr>';
       }

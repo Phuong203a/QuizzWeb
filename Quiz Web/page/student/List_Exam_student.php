@@ -20,6 +20,9 @@
 </style>
 <nav class="navbar navbar-light" style="background-color:#D6EAF8 ">
     <div class="container-fluid">
+    <a href="../login.php" >
+      <i> <img src="../../image/go-back-arrow.png" width="30px"></i>
+    </a>
         <a class="navbar-brand d-flex col-sm-7" style="font-size: 30px;color: blue;text-transform: uppercase; font-family:'Roboto', sans-serif;" >&nbsp List Exam</a>
         <form class="d-flex col-sm-2.5">
         <input class="form-control me-3" type="search" placeholder="Search exam" aria-label="Search">
@@ -59,7 +62,7 @@
         $getMinute = $getMinute2 - $getMinute1;
         echo "<th>".$getMinute." minutes"."</th>";
           echo'<th>
-          <a href="do_quizz.php" title="" data-toggle="tooltip" ><i style="margin:0px 20px;"><img src="/image/edit.png" style="margin: 10px;" width="20px">Làm bài</i></a>
+          <a href="do_quizz.php" title="" data-toggle="tooltip" ><i style="margin:0px 20px;"><img src="../../image/edit.png" style="margin: 10px;" width="20px">Làm bài</i></a>
           </th>
           </tr>';
       }

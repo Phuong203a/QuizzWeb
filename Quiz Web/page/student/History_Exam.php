@@ -32,18 +32,18 @@
         }
     </style>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light "
-    style="background-color:#D6EAF8;font-family: 'Times New Roman', Times, serif">
-    <a class="navbar-brand " href="#">History Exam</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color:#D6EAF8;font-family: 'Times New Roman', Times, serif">
+    <a href="../login.php">
+        <i> <img src="../../image/go-back-arrow.png" width="30px"></i>
+    </a>
+    <a class="navbar-brand" href="#" style="margin:20px 20px;">History Exam</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Exam
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -70,63 +70,60 @@
                 <div class="row gx-3 mb-3">
                     <div class="col-md-6">
                         <label for="Taikhoan">Tài khoản</label>
-                        <input class="form-control" type="text" name="TaiKhoan" id="TaiKhoan" value = "123">
+                        <input class="form-control" type="text" name="TaiKhoan" id="TaiKhoan" value="123">
                     </div>
                     <div class="col-md-6">
                         <label for="HoTen">Họ & Tên</label>
-                        <input class="form-control" type="text" name="HoTen" id="HoTen" value = "123">
+                        <input class="form-control" type="text" name="HoTen" id="HoTen" value="123">
                     </div>
                 </div>
                 <div class="row gx-3 mb-3">
                     <!-- Form Group (organization name)-->
                     <div class="col-md-6">
                         <?php
-                            require "../connect.php";
-                            $sql = "select start_time as st FROM test WHERE id = 1";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                $st = $row['st'];
-                            }
-                        
-                            echo '<label for="Time">Thời gian bắt đầu</label>';
-                            echo "<input class='form-control' id='time' type='datetime-local' name='time' value = '$st'>";
+                        require "../connect.php";
+                        $sql = "select start_time as st FROM test WHERE id = 1";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            $st = $row['st'];
+                        }
+
+                        echo '<label for="Time">Thời gian bắt đầu</label>';
+                        echo "<input class='form-control' id='time' type='datetime-local' name='time' value = '$st'>";
                         ?>
                     </div>
                     <!-- Form Group (location)-->
                     <!-- <div class="col-md-6"> -->
                     <div class="col-md-6">
                         <?php
-                            $sql = "select end_time as et FROM test WHERE id = 1";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                $st = $row['et'];
-                            }
-                            echo '<label for="TimEnd">Thời gian kết thúc</label>';
-                            echo "<input class='form-control' id='time' type='datetime-local' name='time' value = '$st'>";
+                        $sql = "select end_time as et FROM test WHERE id = 1";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            $st = $row['et'];
+                        }
+                        echo '<label for="TimEnd">Thời gian kết thúc</label>';
+                        echo "<input class='form-control' id='time' type='datetime-local' name='time' value = '$st'>";
                         ?>
                     </div>
                 </div>
                 <div class="row gx-3 mb-3">
                     <!-- Form Group (organization name)-->
-                        <div class="col-md-6">
-                            <label for="Score">MSSV</label>
-                            <input class="form-control" id="MSSV" type="text" name="MSSV" value = '52100111'>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="Score">MSSV</label>
+                        <input class="form-control" id="MSSV" type="text" name="MSSV" value='52100111'>
+                    </div>
                     <!-- Form Group (location)-->
                     <div class="col-md-6">
                         <?php
-                            $sql = "SELECT *
+                        $sql = "SELECT *
                             FROM student_answer
                             WHERE id = (SELECT MAX(id) FROM student_answer)";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_array($result))
-                            {
-                                $st = $row['number_correct_answer'];
-                            }
-                            echo '<label for="Answer True">Số câu trả lời đúng</label>';
-                            echo "<input class='form-control' id='AnswerTrue' type='text' name='AnswerTrue' value = '$st'>";
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            $st = $row['number_correct_answer'];
+                        }
+                        echo '<label for="Answer True">Số câu trả lời đúng</label>';
+                        echo "<input class='form-control' id='AnswerTrue' type='text' name='AnswerTrue' value = '$st'>";
                         ?>
                     </div>
                 </div>
@@ -134,28 +131,28 @@
                     <!-- Form Group (organization name)-->
                     <div class="col-md-6">
                         <label for="NotAnswer">Số câu chưa trả lời</label>
-                        <input class="form-control" id="NotAnswer" type="text" name="NotAnswer" value = 0>
+                        <input class="form-control" id="NotAnswer" type="text" name="NotAnswer" value=0>
                     </div>
                     <!-- Form Group (location)-->
                     <div class="col-md-6">
                         <?php
-                            $sf = 5 - $st; 
-                            echo '<label for="AnswerFalse">Số câu trả lời sai </label>';
-                            echo "<input class='form-control' id='AnswerFalse' type='text' name='AnswerFalse' value = '$sf'>"
+                        $sf = 5 - $st;
+                        echo '<label for="AnswerFalse">Số câu trả lời sai </label>';
+                        echo "<input class='form-control' id='AnswerFalse' type='text' name='AnswerFalse' value = '$sf'>";
                         ?>
                     </div>
                 </div>
                 <div class="row gx-3 mb-3">
                     <div class="col-md-6">
                         <?php
-                            $total = $st/5 * 10;
-                            echo '<label for="Score">Điểm</label>';
-                            echo "<input class='form-control' id='Score' type='text' name='Score' value = '$total'>";
+                        $total = $st / 5 * 10;
+                        echo '<label for="Score">Điểm</label>';
+                        echo "<input class='form-control' id='Score' type='text' name='Score' value = '$total'>";
                         ?>
                     </div>
                     <div class="col-md-6">
                         <label for="SumQuestion">Tổng số câu hỏi</label>
-                        <input class="form-control" id="SumQuestion" type="text" name="SumQuestion" value = 5>
+                        <input class="form-control" id="SumQuestion" type="text" name="SumQuestion" value=5>
                     </div>
                 </div>
             </div>
