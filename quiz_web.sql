@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 14, 2023 lúc 06:30 PM
+-- Thời gian đã tạo: Th5 15, 2023 lúc 03:00 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -184,14 +184,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `user_name`, `password`, `student_id`, `email`, `first_name`, `last_name`, `full_name`, `gender`, `phone_number`, `address`, `class_id`, `date_of_birth`, `major_id`, `create_date`, `update_date`) VALUES
-(14, 'aaa', 'aaa', 52100834, 'An@gmail.com', 'aaa', 'aaa', NULL, 0, '0123456789', '21', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(15, 'aaa', 'aaa', 52100834, 'An@gmail.com', 'aaa', 'aaa', NULL, 0, '0123456789', '21', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(22, 'aa', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(24, '', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 1, '0123456789', '', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(25, '', '', 52100834, 'An@gmail.com', 'Tr?n', 'An', NULL, 0, '0123456789', '', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (26, '123', '123', 52100111, 'An@gmail.com', '123', 'An', NULL, 1, '0123456789', '123', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
 (27, '4321', '', 52100123, 'An@gmail.com', '4321', '4321', NULL, 0, '0123456789', '12344', 1, '0000-00-00 00:00:00', 2, NULL, NULL),
-(28, '', '', 52100023, 'Aaan@gmail.com', 'zzzz', 'zzz', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, '2023-05-14 20:47:03', NULL);
+(28, '', '', 52100023, 'Aaan@gmail.com', 'zzzz', 'zzz', NULL, 1, '0123456789', '24-Nguy?n ?ình Chi?u-Nha Trang', 1, '0000-00-00 00:00:00', 2, '2023-05-14 20:47:03', NULL),
+(29, 'An', 'An', 52100326, 'An@gmail.com', 'Tran', 'An', NULL, 0, '0123456789', 'No', 1, '0000-00-00 00:00:00', 2, '2023-05-15 19:51:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -419,7 +415,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT cho bảng `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `student_answer`
